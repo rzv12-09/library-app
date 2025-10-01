@@ -29,5 +29,37 @@ body {
     display: grid;
     height: 100vh;
     grid-template-rows: 10% 90%;
-    padding: 3% 12% 3% 12%;
+    font-family: sans-serif;
+    font-size: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    padding: 1rem 8rem;
+}
+
+#addBookBtn {
+    padding: 10px 20px;
+    background-color: rgb(236, 236, 236);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#addBookBtn:hover {
+    background-color: rgb(223, 223, 223);;
+}
+
+.header span {
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.book-list {
+    background-color:rgb(236, 236, 236) ;
+
 }
