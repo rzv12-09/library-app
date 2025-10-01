@@ -8,3 +8,7 @@ function Book(title,author,pages,isRead){
     this.isRead = isRead;
 }
 
+function addBookToLibrary(title,author,pages,isRead) {
+    let newBook = new Book(title,author,pages,isRead);
+    myLibrary.push(newBook);
+}
