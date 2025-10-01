@@ -1,0 +1,33 @@
+/* Minimal CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  :root {
+    --blue-color:rgb(45, 103, 189);
+    --grey-color:rgb(216, 216, 216);
+  }
+
+  html, body {
+    height: 100%;
+    width: 100%;
+    font-size: 24px;
+  }
+  
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  
+  input, button, textarea, select {
+    font: inherit;
+  }
+  
+body {
+    display: grid;
+    height: 100vh;
+    grid-template-rows: 10% 90%;
+    padding: 3% 12% 3% 12%;
+}
