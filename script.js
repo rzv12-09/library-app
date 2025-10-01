@@ -18,3 +18,31 @@ let book2 = new Book("Second Book","Andrei",313,0);
 
 myLibrary.push(book1);
 myLibrary.push(book2);
+
+function renderBooks(){
+    const bookList = document.querySelector(".book-list");
+    bookList.textContent = "";
+    myLibrary.forEach(book => {
+        const card = document.createElement("div");
+        const title = document.createElement("div");
+        title.textContent = book.title;
+        card.appendChild(title);
+
+        const author = document.createElement("div");
+        author.textContent = book.author;
+        card.appendChild(author);
+
+        const pageNo = document.createElement("div");
+        pageNo.textContent = book.pages;
+        card.appendChild(pageNo);
+
+        const isRead = document.createElement("div");
+        isRead.textContent = book.isRead ? "Has been read" : "Not Read";
+        card.appendChild(isRead);
+
+
+        bookList.appendChild(card);
+    });
+}
+
+renderBooks();
