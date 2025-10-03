@@ -1,4 +1,7 @@
 const myLibrary=[];
+const newBookDialog = document.querySelector("dialog");
+const addBookBtn = document.querySelector("#addBookBtn");
+
 
 function Book(title,author,pages,isRead){
     this.id = crypto.randomUUID();
@@ -45,4 +48,9 @@ function renderBooks(){
     });
 }
 
+
 renderBooks();
+
+addBookBtn.addEventListener("click",()=> {
+    newBookDialog.showModal();
+});
