@@ -1,6 +1,8 @@
 const myLibrary=[];
 const newBookDialog = document.querySelector("dialog");
 const addBookBtn = document.querySelector("#addBookBtn");
+const confirmBtn = document.getElementById("confirmBtn");
+const form = document.querySelector("form");
 
 
 function Book(title,author,pages,isRead){
@@ -54,3 +56,22 @@ renderBooks();
 addBookBtn.addEventListener("click",()=> {
     newBookDialog.showModal();
 });
+
+confirmBtn.addEventListener("click",(event)=>{
+    event.preventDefault();
+    const title = document.getElementById("title");
+    const author = document.getElementById("author");
+    const pages = document.getElementById("pages");
+    const isRead = document.getElementById("isRead");
+    if(!form.checkValidity()){
+        form.reportValidity();
+        return;
+    }
+    addBookToLibrary(title.value,author.value,pages.value,isRead.checked);
+    form.reset();
+    newBookDialog.close();
+});
+
+newBookDialog.addEventListener("close",()=>{
+    renderBooks();
+})
