@@ -14,6 +14,15 @@ function Book(title,author,pages,isRead){
     this.isRead = isRead;
 }
 
+Book.prototype.toogleIsRead = function(){
+    if(this.isRead == 0){
+        this.isRead = 1;
+    }
+    else{
+        this.isRead = 0;
+    }
+}
+
 function addBookToLibrary(title,author,pages,isRead) {
     let newBook = new Book(title,author,pages,isRead);
     myLibrary.push(newBook);
@@ -50,8 +59,13 @@ function renderBooks(){
         pageNo.textContent = book.pages;
         card.appendChild(pageNo);
 
-        const isRead = document.createElement("div");
+        const isRead = document.createElement("button");
+        isRead.id = "isReadBtn";
         isRead.textContent = book.isRead ? "Has been read" : "Not Read";
+        isRead.addEventListener("click",()=>{
+            book.toogleIsRead();
+            renderBooks();
+        })
         card.appendChild(isRead);
 
         const deleteBtn = document.createElement("button");
