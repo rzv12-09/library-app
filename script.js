@@ -45,6 +45,11 @@ function renderBooks(){
         isRead.textContent = book.isRead ? "Has been read" : "Not Read";
         card.appendChild(isRead);
 
+        const deleteBtn = document.createElement("button");
+        deleteBtn.dataset.id = book.id;
+        deleteBtn.textContent = "Delete";
+        deleteBtn.id = "deleteBtn";
+        card.appendChild(deleteBtn);
 
         bookList.appendChild(card);
     });
