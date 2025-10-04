@@ -5,6 +5,7 @@ const confirmBtn = document.getElementById("confirmBtn");
 const form = document.querySelector("form");
 const cancelBtn = document.getElementById("cancelBtn");
 
+
 function Book(title,author,pages,isRead){
     this.id = crypto.randomUUID();
     this.title = title;
@@ -23,6 +24,14 @@ let book2 = new Book("Second Book","Andrei",313,0);
 
 myLibrary.push(book1);
 myLibrary.push(book2);
+
+function removeFromLibrary(id){
+    myLibrary.forEach((book,index) => {
+        if(book.id == id){
+            myLibrary.splice(index,1);
+        }
+    });
+}
 
 function renderBooks(){
     const bookList = document.querySelector(".book-list");
@@ -49,6 +58,10 @@ function renderBooks(){
         deleteBtn.dataset.id = book.id;
         deleteBtn.textContent = "Delete";
         deleteBtn.id = "deleteBtn";
+        deleteBtn.addEventListener("click",()=>{
+            removeFromLibrary(deleteBtn.dataset.id);
+            renderBooks();
+        })
         card.appendChild(deleteBtn);
 
         bookList.appendChild(card);
