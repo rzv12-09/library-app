@@ -3,7 +3,7 @@ const newBookDialog = document.querySelector("dialog");
 const addBookBtn = document.querySelector("#addBookBtn");
 const confirmBtn = document.getElementById("confirmBtn");
 const form = document.querySelector("form");
-
+const cancelBtn = document.getElementById("cancelBtn");
 
 function Book(title,author,pages,isRead){
     this.id = crypto.randomUUID();
@@ -74,4 +74,8 @@ confirmBtn.addEventListener("click",(event)=>{
 
 newBookDialog.addEventListener("close",()=>{
     renderBooks();
+})
+
+cancelBtn.addEventListener("click",()=>{
+    form.reset();
 })
