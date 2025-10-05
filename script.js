@@ -16,7 +16,7 @@ function Book(title,author,pages,isRead){
 
 Book.prototype.toogleIsRead = function(){
     if(this.isRead == 0){
-        this.isRead = 1;
+        this.isRead = 1; 
     }
     else{
         this.isRead = 0;
@@ -28,8 +28,8 @@ function addBookToLibrary(title,author,pages,isRead) {
     myLibrary.push(newBook);
 }
 
-let book1 = new Book("My book","John",233,1);
-let book2 = new Book("Second Book","Andrei",313,0);
+let book1 = new Book("Sample Book 1","Someone",233,1);
+let book2 = new Book("Samble Book 2","Someone",126,0);
 
 myLibrary.push(book1);
 myLibrary.push(book2);
@@ -48,24 +48,30 @@ function renderBooks(){
     myLibrary.forEach(book => {
         const card = document.createElement("div");
         const title = document.createElement("div");
-        title.textContent = book.title;
+        title.textContent = '"' + book.title + '"';
         card.appendChild(title);
 
         const author = document.createElement("div");
-        author.textContent = book.author;
+        author.textContent = "by " + book.author;
         card.appendChild(author);
 
         const pageNo = document.createElement("div");
-        pageNo.textContent = book.pages;
+        pageNo.textContent = book.pages + " pages";
         card.appendChild(pageNo);
 
         const isRead = document.createElement("button");
         isRead.id = "isReadBtn";
         isRead.textContent = book.isRead ? "Has been read" : "Not Read";
-        isRead.addEventListener("click",()=>{
+        isRead.addEventListener("click",(event)=>{
             book.toogleIsRead();
             renderBooks();
         })
+        if(book.isRead == 1){
+            isRead.classList.add("read");
+        }
+        else{
+            isRead.classList.add("not-read");
+        }
         card.appendChild(isRead);
 
         const deleteBtn = document.createElement("button");
@@ -77,6 +83,7 @@ function renderBooks(){
             renderBooks();
         })
         card.appendChild(deleteBtn);
+        card.classList.add("card");
 
         bookList.appendChild(card);
     });
