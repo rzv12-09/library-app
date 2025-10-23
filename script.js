@@ -5,23 +5,30 @@ const confirmBtn = document.getElementById("confirmBtn");
 const form = document.querySelector("form");
 const cancelBtn = document.getElementById("cancelBtn");
 
+class Book{
+    id;
+    title;
+    author;
+    pages;
+    isRead;
+    constructor(title,author,pages,isRead){
+        this.id = crypto.randomUUID();
+        this.title = title;
+        this.author = author
+        this.pages = pages;
+        this.isRead = isRead;
+    }
+    toogleIsRead(){
+        if(this.isRead == 0){
+            this.isRead = 1; 
+        }
+        else{
+            this.isRead = 0;
+        }
+    }
 
-function Book(title,author,pages,isRead){
-    this.id = crypto.randomUUID();
-    this.title = title;
-    this.author = author
-    this.pages = pages;
-    this.isRead = isRead;
 }
 
-Book.prototype.toogleIsRead = function(){
-    if(this.isRead == 0){
-        this.isRead = 1; 
-    }
-    else{
-        this.isRead = 0;
-    }
-}
 
 function addBookToLibrary(title,author,pages,isRead) {
     let newBook = new Book(title,author,pages,isRead);
