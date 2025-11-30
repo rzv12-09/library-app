@@ -200,3 +200,11 @@ form button:hover {
 .not-read:hover {
   background-color:#e08a8a
 }
+
+.error {
+  font-size: 0.85rem;
+  color: red;
+  font-weight: bold;
+  height:20px;
+  margin-top: -8px;
+}

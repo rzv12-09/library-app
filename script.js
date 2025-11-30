@@ -109,8 +109,7 @@ confirmBtn.addEventListener("click",(event)=>{
     const author = document.getElementById("author");
     const pages = document.getElementById("pages");
     const isRead = document.getElementById("isRead");
-    if(!form.checkValidity()){
-        form.reportValidity();
+    if(!formValidation()){
         return;
     }
     addBookToLibrary(title.value,author.value,pages.value,isRead.checked);
@@ -125,3 +124,27 @@ newBookDialog.addEventListener("close",()=>{
 cancelBtn.addEventListener("click",()=>{
     form.reset();
 })
+
+function formValidation(){
+    const title = document.getElementById("title");
+    const author = document.getElementById("author");
+    const pages = document.getElementById("pages");
+    const error = document.querySelector(".error");
+    error.textContent = "";
+    if(!title.checkValidity()){
+        error.textContent = "Please fill out title field";
+        return false;
+    }
+    if(!author.checkValidity()){
+        error.textContent = "Please fill out author field";
+        return false;
+    }
+    if(!pages.checkValidity()){
+        error.textContent = "Please fill out pages field";
+        return false;
+    }
+
+
+    return true;
+}
+
